@@ -1,0 +1,7 @@
+"clojure-lambda-skeleton-api": {
+  "Type" : "AWS::ApiGateway::RestApi",
+  "Properties" : {
+    "Description" : "A really simple API for demonstration purposes.",
+    "Name" : "Clojure Lambda Skeleton API"
+  }
+}
