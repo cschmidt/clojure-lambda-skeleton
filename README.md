@@ -18,7 +18,25 @@ Sample project that demonstrates:
       --zip fileb://target/uberjar/clojure-lambda-skeleton-0.1.0-SNAPSHOT-standalone.jar
 
 
+    aws --profile personal \
+      lambda update-function-code \
+      --function-name api-test \
+      --zip-file fileb://target/uberjar/clojure-lambda-skeleton-0.1.0-SNAPSHOT-standalone.jar
+
+## Hints
+Setting a default AWS profile:
+
+    export AWS_DEFAULT_PROFILE=personal
+
+
+## Deployment Sequence
+
+
 ## TODO
+
+- Setup and deployment via CloudFormation
+
+
 Things not yet implemented that'd be interesting
 
 - some kind of persistent storage (S3, Dynamo, something that exhibits the

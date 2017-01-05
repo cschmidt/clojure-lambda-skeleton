@@ -4,4 +4,4 @@
 aws --profile personal \
   lambda update-function-code \
   --function-name api-test \
-  --zip-file fileb://target/lambda-webthumbs.zip
+  --zip-file fileb://target/uberjar/clojure-lambda-skeleton-0.1.0-SNAPSHOT-standalone.jar

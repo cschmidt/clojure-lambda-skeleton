@@ -1,7 +1,49 @@
-"clojure-lambda-skeleton-api": {
-  "Type" : "AWS::ApiGateway::RestApi",
-  "Properties" : {
-    "Description" : "A really simple API for demonstration purposes.",
-    "Name" : "Clojure Lambda Skeleton API"
+{
+  "AWSTemplateFormatVersion" : "2010-09-09",
+  "Description" : "Clojure Lambda Skeleton",
+  "Resources" : {
+    "LambdaFunction": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "FunctionName": "clojure-lambda-skeleton-function",
+        "MemorySize": "128",
+        "Handler": "ClojureRequestHandler::handleRequest",
+        "Role": "arn:aws:iam::745313119890:role/APIGatewayLambdaExecRole",
+        "Code": {
+          "S3Bucket": "FIXME",
+          "S3Key": "FIXME"
+        },
+        "Runtime": "java8",
+        "Timeout": "3"
+      }
+    },
+    "RestApi": {
+      "Type" : "AWS::ApiGateway::RestApi",
+      "Properties" : {
+        "Description" : "A really simple API for demonstration purposes.",
+        "Name" : "Clojure Lambda Skeleton API"
+      }
+    },
+    "Resource" : {
+      "Type": "AWS::ApiGateway::Resource",
+      "Properties": {
+        "RestApiId": { "Ref": "RestApi" },
+        "ParentId": { "Fn::GetAtt": ["RestApi", "RootResourceId"] },
+        "PathPart": "stack"
+      }
+    },
+    "Method": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "RestApiId": { "Ref": "RestApi" },
+        "ResourceId": { "Fn::GetAtt": ["RestApi", "RootResourceId"] },
+        "HttpMethod": "GET",
+        "AuthorizationType": "NONE",
+        "Integration": { 
+          "Type": "AWS_PROXY",
+          "Uri": {"Fn::GetAtt":["LambdaFunction", "Arn"]}
+        }
+      }
+    }
   }
 }
