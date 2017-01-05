@@ -17,6 +17,6 @@
   (let [logger (.getLogger context)
         request (parse-stream (reader input))]
     (.log logger (str "request: " (generate-string request)))
-    (.log logger "MOAR LOGGING!!")
+    (.log logger "A little less logging")
     (.log logger (str "a=" (query-param request "a")))))
 
