@@ -10,8 +10,8 @@
         "Handler": "ClojureRequestHandler::handleRequest",
         "Role": "arn:aws:iam::745313119890:role/APIGatewayLambdaExecRole",
         "Code": {
-          "S3Bucket": "FIXME",
-          "S3Key": "FIXME"
+          "S3Bucket": "codepipeline-us-west-2-394567624893",
+          "S3Key": "clojure-lambda-skeleton/target/uberjar/clojure-lambda-skeleton-0.1.0-SNAPSHOT-standalone.jar"
         },
         "Runtime": "java8",
         "Timeout": "3"
