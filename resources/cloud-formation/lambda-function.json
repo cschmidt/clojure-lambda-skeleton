@@ -1,6 +1,16 @@
 {
   "AWSTemplateFormatVersion" : "2010-09-09",
   "Description" : "Clojure Lambda Skeleton - Lambda Function",
+  "Parameters" : {
+     "S3BucketParam": {
+       "Type" : "String",
+       "Description" : "The S3 bucket that contains the Lambda function source"
+     },
+     "S3KeyParam": {
+       "Type" : "String",
+       "Description" : "The S3 key for the Lambda function source"
+     }
+  },
   "Resources" : {
     "LambdaFunction": {
       "Type": "AWS::Lambda::Function",
@@ -10,8 +20,8 @@
         "Handler": "ClojureRequestHandler::handleRequest",
         "Role": "arn:aws:iam::745313119890:role/APIGatewayLambdaExecRole",
         "Code": {
-          "S3Bucket": "codepipeline-us-west-2-394567624893",
-          "S3Key": "clojure-lambda-skeleton/target/uberjar/clojure-lambda-skeleton-0.1.0-SNAPSHOT-standalone.jar"
+          "S3Bucket": { "Ref" : "S3BucketParam" },
+          "S3Key": { "Ref" : "S3KeyParam" }
         },
         "Runtime": "java8",
         "Timeout": "3"
