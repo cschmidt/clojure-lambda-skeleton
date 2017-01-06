@@ -8,4 +8,8 @@
                  [cheshire "5.6.3"]]
   :aot :all
   :target-path "target/%s"
-  :profiles {:uberjar {:aot :all}})
+  :git-version {:version-cmd "git rev-parse --short HEAD"}
+  :profiles {:uberjar {:aot :all
+                       :plugins [[org.clojars.cvillecsteele/lein-git-version "1.2.5"]]}
+             :dev {:plugins [[org.clojars.cvillecsteele/lein-git-version "1.2.5"]]}
+             })
