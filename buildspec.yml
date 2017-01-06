@@ -3,7 +3,7 @@ version: 0.1
 phases:
   build:
     commands: >
-      - lein uberjar && echo "{\"jar_file\": \"`ls target/uberjar/*.jar`\"}" > build.json
+      lein uberjar && echo "{\"jar_file\": \"`ls target/uberjar/*.jar`\"}" > build.json
 
 artifacts:
   files:
